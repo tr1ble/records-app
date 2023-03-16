@@ -1,19 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {RootState} from "../index";
 
+let id=0;
+
 const initialState: RecordState = {
   records: [
     {
+      id: id++,
       description: "Vestibulum sed viverra dui.",
-      date: new Date(),
+      date: new Date().toDateString(),
     },
     {
+      id: id++,
       description: "Duis tristique felis sapien",
-      date: new Date(),
+      date: new Date().toDateString(),
     },
     {
+      id: id++,
       description: "Dermentum dolor ultrices dignissi",
-      date: new Date(),
+      date: new Date().toDateString(),
     }
   ]
 }
@@ -26,7 +31,7 @@ export const recordSlice = createSlice({
         state: RecordState,
         action: PayloadAction<IRecord>
     ) {
-      state.records.push(action.payload);
+      state.records.push({...action.payload, id: id++ });
     },
     removeRecord(
         state: RecordState,
@@ -38,7 +43,7 @@ export const recordSlice = createSlice({
         state: RecordState,
         action: PayloadAction<IRecordUpdate>
     ) {
-      state.records[action.payload.number] = action.payload.record;
+      state.records[action.payload.number] = { ...action.payload.record, date: new Date().toDateString() };
     }
   },
 });

@@ -1,4 +1,5 @@
 interface IRecord {
+  id: number,
   description: string
   date: string,
 }
