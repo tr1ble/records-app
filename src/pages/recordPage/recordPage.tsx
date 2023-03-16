@@ -57,7 +57,7 @@ export const RecordPage = () => {
 
   return (
       <div className={cx('record-page')}>
-        <h1 className={cx('record-page-title')}>Record table</h1>
+        <h1 className={cx('record-page-title')}>TO-DO table</h1>
         <Table data={records} columns={[ 'Description', 'Date']} actions={actions}/>
         {currentForm}
       </div>
