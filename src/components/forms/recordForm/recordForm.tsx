@@ -19,6 +19,8 @@ export const RecordForm: React.FC<Props> = ({ onSubmit, initialData, action}) =>
             label={'Description'}
             name={'description'}
             initialValue={initialData?.description}
+            required
+            rules={[{ required: true, message: 'Please fill description' }]}
         >
           <TextArea />
         </Form.Item>
