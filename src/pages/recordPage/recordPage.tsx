@@ -11,6 +11,7 @@ import { Table } from '../../components/table';
 import RecordForm from "../../components/forms/recordForm";
 import { RECORD_COLUMNS } from './constants';
 import styles from './recordPage.scss';
+import {Button} from "antd";
 
 const cx = classNames.bind(styles);
 
@@ -47,17 +48,17 @@ export const RecordPage = () => {
     dispatch(removeRecord(number));
   }
 
-  const onAdd: Action = { name: 'Add', onHandle: onAddHandle };
   const onRemove: Action = { name: 'Remove', onHandle: onDeleteHandle };
   const onUpdate: Action = { name: 'Update', onHandle: onUpdateHandle };
 
-  const actions:Action[] = [onAdd, onRemove, onUpdate];
+  const actions:Action[] = [onRemove, onUpdate];
 
   const records = useTypedSelector(selectRecords);
 
   return (
       <div className={cx('record-page')}>
         <h1 className={cx('record-page-title')}>TO-DO table</h1>
+        <Button className={cx('button')} onClick={onAddHandle}>Add</Button>
         <Table data={records} columns={RECORD_COLUMNS} actions={actions}/>
         {currentForm}
       </div>
