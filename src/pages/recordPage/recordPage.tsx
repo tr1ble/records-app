@@ -8,9 +8,9 @@ import {
 import { selectRecords, addRecord, removeRecord, updateRecord } from '../../store/record/recordSilce';
 import { RootState } from '../../store';
 import { Table } from '../../components/table';
-
-import styles from './recordPage.scss';
 import RecordForm from "../../components/forms/recordForm";
+import { RECORD_COLUMNS } from './constants';
+import styles from './recordPage.scss';
 
 const cx = classNames.bind(styles);
 
@@ -58,7 +58,7 @@ export const RecordPage = () => {
   return (
       <div className={cx('record-page')}>
         <h1 className={cx('record-page-title')}>TO-DO table</h1>
-        <Table data={records} columns={[ 'Description', 'Date']} actions={actions}/>
+        <Table data={records} columns={RECORD_COLUMNS} actions={actions}/>
         {currentForm}
       </div>
   )
